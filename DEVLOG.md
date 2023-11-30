@@ -37,4 +37,7 @@ found this article on the interwebs about using fourier transforms to make ice c
 - much as i hate debugging, dla already has code down, all i need to do is fix it.
 ### 12.30p Update:
 - so the dla cluster script has been going for a good while now. i want it to generate like 1000 points nad i have a nasty little perimeter calculator that is not optimized AT ALL, but who cares when the cluster looks like a freaking fulgurite.
-- 
+## Thursday 11/30
+### 1230 pm update:
+- so i got the points to plot but for some reason the point collection function is broken. 
+- my laptop is about to die so ill submit just this for today and finish this on my time during the evening. 
