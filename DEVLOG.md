@@ -10,7 +10,7 @@
 
 > Label and create an eden cluster similar to FIgure 7.17
 
-> TODO: Label and create a DLA cluster with a random walk demonstration in the same picture (?) per Figure 7.18
+> Label and create a DLA cluster with a random walk demonstration in the same picture (?) per Figure 7.18
 
 > TODO: implement a cluster with a fractal dimensionality of 1.99 and 1.65 and plot logr vs logm of the eden and dla clusters respectively (1.99 for eden and 1.65 for dla). 
 
@@ -23,10 +23,18 @@ found this article on the interwebs about using fourier transforms to make ice c
 ### 12pm update
 - I put the names of the files and what they will eventually contain in the readme and in the doxygen for each file as placeholders.
 - time to get started on the first todo for this class. 
-## Thursday
+## Thursday 11/23
 ### 8 pm Update:
 - so I got the first todo done. 
 - looks like the second one will also not give me much trouble. 
 - ill finish of the third todo for the day as well, this gives me breathing room to work on this project in class and not have to worry about it beyond class.
 - got the first one working. now I'm gonna work on other stuff now.
 - dla sim file keeps giving me errors. maybe i need to rewrite the whole thing from scratch.
+## Tuesday 11/28
+### 11am update:
+- quite a lot has gone down since last tuesday, least of which beign my procrastination for this project. time to get it back on track. 
+- goal for today, is to finish tasks two and three.
+- much as i hate debugging, dla already has code down, all i need to do is fix it.
+### 12.30p Update:
+- so the dla cluster script has been going for a good while now. i want it to generate like 1000 points nad i have a nasty little perimeter calculator that is not optimized AT ALL, but who cares when the cluster looks like a freaking fulgurite.
+- 

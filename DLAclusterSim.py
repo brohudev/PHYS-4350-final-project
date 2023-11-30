@@ -27,37 +27,53 @@ def random_walk(position, grid):
         if is_valid_position(new_position, grid):
             return new_position
 
+def get_perimeter_points(cluster):
+    perimeter_points = []
+    for x in range(cluster.shape[0]):
+        for y in range(cluster.shape[1]):
+            if cluster[x, y] == 1:
+                for i in [-1, 0, 1]:
+                    for j in [-1, 0, 1]:
+                        if (i != 0 or j != 0) and is_valid_position((x+i, y+j), cluster):
+                            if cluster[x+i, y+j] == 0:
+                                perimeter_points.append((x+i, y+j))
+    return perimeter_points
+
+def add_particle(grid):
+    perimeter_points = get_perimeter_points(grid)
+
+    if perimeter_points:
+        # Select a random particle outside the perimeter_points
+        random_particle = tuple(np.random.choice(grid.shape[0], size=2))
+        
+        while random_particle not in perimeter_points:
+            # Until the particle touches a point in the perimeter_points, have it perform a random walk.
+            random_particle = random_walk(random_particle, grid)
+        
+        # Take this perimeter point and make grid[point] = 1
+        grid[random_particle] = 1
+        print("added another point: ",random_particle) # small progress tracker    
+
 def dla_cluster_growth(size, target_size):
     grid = initialize_grid(size)
     center = size // 2
     grid[center, center] = 1  # Seed at the origin
+    r_vs_m = []
     current_size = 1
 
     while current_size < target_size:
-        # Randomly release a particle some distance away from the seed
-        distance = np.random.randint(5, size // 2)
-        angle = np.random.uniform(0, 2 * np.pi)
-        particle_position = (
-            center + int(distance * np.cos(angle)),
-            center + int(distance * np.sin(angle))
-        )
-        print("released a new point onto canvas: ",particle_position)
-
-        while not np.any(grid[particle_position]):
-            particle_position = random_walk(particle_position, grid)
-        # Stick the particle to the seed, increasing the cluster size
-        grid[particle_position] = 1
-        current_size += 1
-        print("the current size is now: ",current_size)
+       add_particle(grid)
+       current_size = np.sum(grid)
+       print("grid size is now: ", current_size)  # small progress tracker
 
     return grid
 
-# Example usage
-size_of_grid = 10
+# modify these points to get a bigger/smaller grid
+size_of_grid = 20
 target_dla_size = 50
-dla_resulting_cluster = dla_cluster_growth(size_of_grid, target_dla_size)
+dla_resulting_table = dla_cluster_growth(size_of_grid, target_dla_size)
 
-# Display the result using matplotlib
-plt.imshow(dla_resulting_cluster, cmap='gray')
+print(dla_resulting_table)
+plt.imshow(dla_resulting_table, cmap='gray')
 plt.title('DLA Cluster Growth Simulation')
 plt.show()
