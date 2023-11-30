@@ -41,3 +41,7 @@ found this article on the interwebs about using fourier transforms to make ice c
 ### 1230 pm update:
 - so i got the points to plot but for some reason the point collection function is broken. 
 - my laptop is about to die so ill submit just this for today and finish this on my time during the evening. 
+### 230 pm update: 
+- so i got the rest of the code working. I can't get the fractal dimensionality of both graphs high enough, but alas, time has run out.
+- i did shorten the scope of the project to include only one extra exercise, 7.19 as doing 7.20 and making sure the snowflake simulation would have enough creative variation to not be considered academic dishonesty is a. too much work and b. extremely time intensive. 
+- so im keeping this as the final commit, updating the readme, and calling it done from here on out. 

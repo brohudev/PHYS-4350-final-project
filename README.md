@@ -12,7 +12,7 @@ Since this is a textbook section, I am looking to replicate the results shown in
 therefore, the files are named after the pictures they try to mimic, and one exercise to show my grasp of the content in this section(I did two because why not):
 - edenClusterSim.py: simulates figure 7.17 (in the text)
 - DLAclusterSim.py: simulates figure 7.18
-- fractalDimensionality.py: siulates figure 7.19
+- fractalDimensionalityDLA.py: simulate the DLA cluster fractal dimensionality plot in figure 7.19
+- fractalDimensionalityEden.py: simulates the eden cluster fractal dimensionality plot in figure 7.19
 - exercise7-19.py: implements exercise 7.19 in the section
-- exercise7-20.py: implements exerckse 7.20 in the section for fun.
-- snowflakeSim.py: some blog I found online that uses the same method to generate snowflake gifs, and i wanna test it out and play with it, for fun. 
+- the pictures are for teh respective exercises, kept as proof of the pudding for this project. 

@@ -52,4 +52,5 @@ resulting_cluster = grow_cluster(size_of_lattice, target_cluster_size)
 # Display the result using matplotlib
 plt.imshow(resulting_cluster, cmap='gray')
 plt.title('Eden Cluster Growth Simulation')
+plt.savefig("edenClusterSim.png")
 plt.show()

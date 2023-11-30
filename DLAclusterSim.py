@@ -69,11 +69,12 @@ def dla_cluster_growth(size, target_size):
     return grid
 
 # modify these points to get a bigger/smaller grid
-size_of_grid = 20
-target_dla_size = 50
+size_of_grid = 100
+target_dla_size = 2000
 dla_resulting_table = dla_cluster_growth(size_of_grid, target_dla_size)
 
 print(dla_resulting_table)
 plt.imshow(dla_resulting_table, cmap='gray')
 plt.title('DLA Cluster Growth Simulation')
+plt.savefig("DLAclustersim.png")
 plt.show()
