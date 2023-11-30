@@ -4,14 +4,11 @@ TODO: implement a cluster with a fractal dimensionality of 1.99 and 1.65 and plo
 """
 import numpy as np
 import matplotlib.pyplot as plt
-
 def initialize_grid(size):
     return np.zeros((size, size), dtype=int)
-
 def is_valid_position(position, grid):
     x, y = position
     return 0 <= x < grid.shape[0] and 0 <= y < grid.shape[1]
-
 def random_walk(position, grid):
     while True:
         move = np.random.choice(['up', 'down', 'left', 'right'])
@@ -27,7 +24,6 @@ def random_walk(position, grid):
 
         if is_valid_position(new_position, grid):
             return new_position
-
 def get_perimeter_points(cluster):
     perimeter_points = []
     for x in range(cluster.shape[0]):
@@ -39,7 +35,6 @@ def get_perimeter_points(cluster):
                             if cluster[x+i, y+j] == 0:
                                 perimeter_points.append((x+i, y+j))
     return perimeter_points
-
 def add_particle(grid):
     perimeter_points = get_perimeter_points(grid)
 
@@ -54,7 +49,6 @@ def add_particle(grid):
         # Take this perimeter point and make grid[point] = 1
         grid[random_particle] = 1
         print("added another point: ",random_particle) # small progress tracker    
-
 def dla_cluster_growth(size, target_size):
     grid = initialize_grid(size)
     center = size // 2
@@ -68,12 +62,7 @@ def dla_cluster_growth(size, target_size):
        print("grid size is now: ", current_size)  # small progress tracker
 
     return grid
-
-def calculate_radius_vs_mass(grid, cluster_size, num_points, r_stops, grid_center):
-    def is_valid_position(position, grid):
-        x, y = position
-        return 0 <= x < grid.shape[0] and 0 <= y < grid.shape[1]
-
+def calculate_radius_vs_mass(grid, size_of_grid, r_stops, grid_center):
     def get_cluster_mass_within_radius(grid, center, radius):
         mass = 0
         for x in range(grid.shape[0]):
@@ -87,23 +76,26 @@ def calculate_radius_vs_mass(grid, cluster_size, num_points, r_stops, grid_cente
     radius_vs_mass = []
 
     for i in range(1, r_stops + 1):
-        radius = i * cluster_size / r_stops
+        radius = i *  size_of_grid / r_stops
         mass_within_radius = get_cluster_mass_within_radius(grid, grid_center, radius)
         radius_vs_mass.append((radius, mass_within_radius))
 
     return radius_vs_mass
 
 # modify these points to get a bigger/smaller grid
-size_of_grid = 20
-target_dla_size = 50
+size_of_grid = 100
+target_dla_size = 2500
+#leave this generation code if you need it, but i used the data file to save time. 
 dla_resulting_table = dla_cluster_growth(size_of_grid, target_dla_size)
+#save the grid so you dont have to regenerate it each time. 
+np.save("dla_resulting_table.npz", dla_resulting_table) 
 #prepare for the r vs m table
 grid_center = (size_of_grid // 2, size_of_grid // 2)
 cluster_size = target_dla_size
 num_points = target_dla_size
-r_stops = 10
+r_stops = 100
 # make the table
-radius_vs_mass_table = calculate_radius_vs_mass(np.array(dla_resulting_table), cluster_size, num_points, r_stops, grid_center)
+radius_vs_mass_table = calculate_radius_vs_mass(np.array(dla_resulting_table),size_of_grid, r_stops, grid_center)
 radius, mass = zip(*radius_vs_mass_table)
 
 #Find Log of all the arrays
